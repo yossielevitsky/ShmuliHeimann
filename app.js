@@ -198,9 +198,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update caption title dynamically
                 const trackName = track.querySelector('.playlist-track-name').textContent;
+                const trackDesc = track.querySelector('.playlist-track-desc').textContent;
                 const videoTitleEl = document.getElementById('currentVideoTitle');
+                const videoDescEl = document.getElementById('currentVideoDesc');
                 if (videoTitleEl) {
                     videoTitleEl.textContent = trackName;
+                }
+                if (videoDescEl) {
+                    videoDescEl.textContent = ` — ${trackDesc}`;
                 }
             });
         });
