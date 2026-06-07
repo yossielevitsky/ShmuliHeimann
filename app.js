@@ -195,6 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Update iframe source with autoplay enabled
                 mainIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+
+                // Update caption title dynamically
+                const trackName = track.querySelector('.playlist-track-name').textContent;
+                const videoTitleEl = document.getElementById('currentVideoTitle');
+                if (videoTitleEl) {
+                    videoTitleEl.textContent = trackName;
+                }
             });
         });
     }
