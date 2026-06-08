@@ -1348,6 +1348,23 @@ footer {
     .page-title { font-size: 3rem; }
     .hero-title { font-size: 3.8rem; }
     
+    /* Skip page headers on Biography and Recordings in tablet/phone mode */
+    .page-about .page-header,
+    .page-recordings .page-header {
+        display: none !important;
+    }
+    .page-about .bio-details,
+    .page-recordings .featured-series {
+        padding-top: 9rem !important;
+    }
+    
+    /* Remove outline grid/frame behind portrait images in tablet/phone mode */
+    .hero-portrait-wrapper::before,
+    .bio-image-wrapper::before,
+    .welcome-image-wrapper::before {
+        display: none !important;
+    }
+    
     .bio-grid {
         grid-template-columns: 1fr;
         gap: 4rem;
