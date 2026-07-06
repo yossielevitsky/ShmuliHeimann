@@ -176,40 +176,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-       YOMIM NORAIM VIDEO PLAYLIST CONTROLLER
+       GENERIC VIDEO PLAYLIST CONTROLLERS
        ========================================== */
-    const playlistTracks = document.querySelectorAll('.playlist-track-item');
-    const mainIframe = document.querySelector('.playlist-player iframe');
+    const playlists = document.querySelectorAll('.playlist-container');
 
-    if (playlistTracks.length > 0 && mainIframe) {
-        playlistTracks.forEach(track => {
-            track.addEventListener('click', () => {
-                // Remove active class from all tracks
-                playlistTracks.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked track
-                track.classList.add('active');
-                
-                // Get video ID from data-video-id attribute
-                const videoId = track.getAttribute('data-video-id');
-                
-                // Update iframe source with autoplay enabled
-                mainIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+    playlists.forEach(playlist => {
+        const playlistTracks = playlist.querySelectorAll('.playlist-track-item');
+        const mainIframe = playlist.querySelector('.playlist-player iframe');
 
-                // Update caption title dynamically
-                const trackName = track.querySelector('.playlist-track-name').textContent;
-                const trackDesc = track.querySelector('.playlist-track-desc').textContent;
-                const videoTitleEl = document.getElementById('currentVideoTitle');
-                const videoDescEl = document.getElementById('currentVideoDesc');
-                if (videoTitleEl) {
-                    videoTitleEl.textContent = trackName;
-                }
-                if (videoDescEl) {
-                    videoDescEl.textContent = ` — ${trackDesc}`;
-                }
+        if (playlistTracks.length > 0 && mainIframe) {
+            playlistTracks.forEach(track => {
+                track.addEventListener('click', () => {
+                    // Remove active class from all tracks in THIS playlist
+                    playlistTracks.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked track
+                    track.classList.add('active');
+                    
+                    // Get video ID from data-video-id attribute
+                    const videoId = track.getAttribute('data-video-id');
+                    
+                    // Update iframe source with autoplay enabled
+                    mainIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+
+                    // Update caption title dynamically
+                    const trackName = track.querySelector('.playlist-track-name').textContent;
+                    const trackDesc = track.querySelector('.playlist-track-desc').textContent;
+                    const videoTitleEl = playlist.querySelector('.currentVideoTitle');
+                    const videoDescEl = playlist.querySelector('.currentVideoDesc');
+                    if (videoTitleEl) {
+                        videoTitleEl.textContent = trackName;
+                    }
+                    if (videoDescEl) {
+                        videoDescEl.textContent = ` — ${trackDesc}`;
+                    }
+                });
             });
-        });
-    }
+        }
+    });
 
     /* ==========================================
        SIMPLIFIED INLINE BOOKING FORM SUBMISSION
@@ -230,6 +234,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if (formContainer) {
                 formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+        });
+    }
+
+    /* ==========================================
+       COPY EMAIL TO CLIPBOARD
+       ========================================== */
+    const copyEmailBtn = document.querySelector('.copy-email-btn');
+    const emailText = document.querySelector('.email-text');
+
+    if (copyEmailBtn && emailText) {
+        copyEmailBtn.addEventListener('click', () => {
+            const email = emailText.textContent.trim();
+            navigator.clipboard.writeText(email).then(() => {
+                const icon = copyEmailBtn.querySelector('i');
+                if (icon) {
+                    icon.className = 'fa-solid fa-check';
+                }
+                copyEmailBtn.classList.add('copied');
+                copyEmailBtn.setAttribute('title', 'Copied!');
+                
+                setTimeout(() => {
+                    if (icon) {
+                        icon.className = 'fa-regular fa-copy';
+                    }
+                    copyEmailBtn.classList.remove('copied');
+                    copyEmailBtn.setAttribute('title', 'Copy email address');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
         });
     }
 
