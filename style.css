@@ -572,6 +572,10 @@ img {
 /* ==========================================
    BIOGRAPHY SECTION
    ========================================== */
+.page-about .bio-details {
+    padding-top: 11rem;
+}
+
 .bio-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
