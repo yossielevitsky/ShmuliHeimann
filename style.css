@@ -407,6 +407,7 @@ img {
     align-items: center;
     background-image: url('assets/hero.jpg');
     background-color: #0A0910; /* fallback deep midnight */
+    background-repeat: no-repeat;
     background-size: 125% auto;
     background-position: calc(50% + 180px) 45%;
     overflow: hidden;
@@ -1552,6 +1553,8 @@ footer {
         padding: 0 0 4rem 0;
         display: flex;
         align-items: flex-end;
+        background-repeat: no-repeat;
+        background-size: cover;
         background-position: center 20%;
     }
     
@@ -1664,6 +1667,15 @@ footer {
         color: var(--color-bronze);
     }
     
+    .hero {
+        height: 100vh;
+        min-height: 550px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center 15%;
+        padding: 0 0 3.5rem 0;
+    }
+
     .hero-title { font-size: 2.8rem; }
     .hero-tagline { font-size: 0.95rem; margin-bottom: 2.5rem; }
     .hero-buttons {
