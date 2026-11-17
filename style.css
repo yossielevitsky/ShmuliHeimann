@@ -676,6 +676,23 @@ img {
     grid-template-columns: 1fr 1.2fr;
     gap: 6rem;
     align-items: center;
+    margin-bottom: 7rem;
+}
+
+.bio-grid:last-child {
+    margin-bottom: 0;
+}
+
+.bio-grid.bio-grid-reverse {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.bio-grid.bio-grid-reverse .bio-image-wrapper {
+    order: 2;
+}
+
+.bio-grid.bio-grid-reverse .bio-text {
+    order: 1;
 }
 
 .bio-image-wrapper {
@@ -1549,6 +1566,23 @@ footer {
     .bio-grid {
         grid-template-columns: 1fr;
         gap: 4rem;
+        margin-bottom: 5rem;
+    }
+    
+    .bio-grid:last-child {
+        margin-bottom: 0;
+    }
+    
+    .bio-grid.bio-grid-reverse {
+        grid-template-columns: 1fr;
+    }
+    
+    .bio-grid.bio-grid-reverse .bio-image-wrapper {
+        order: -1;
+    }
+    
+    .bio-grid.bio-grid-reverse .bio-text {
+        order: 1;
     }
     
     .bio-image-wrapper {
