@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=13">
 
     <!-- Prevent browser scroll restoration / anchor bounce on page load in Chrome -->
     <script>
@@ -28,26 +28,6 @@
             history.replaceState(null, '', window.location.pathname + window.location.search);
         }
         window.scrollTo(0, 0);
-
-        var __initialScrollLock = true;
-        window.addEventListener('scroll', function() {
-            if (__initialScrollLock && window.scrollY !== 0) {
-                window.scrollTo(0, 0);
-            }
-        }, { passive: false });
-
-        function releaseLock() {
-            window.scrollTo(0, 0);
-            __initialScrollLock = false;
-        }
-
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-            setTimeout(releaseLock, 100);
-        } else {
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(releaseLock, 100);
-            });
-        }
 
         window.addEventListener('beforeunload', function() {
             window.scrollTo(0, 0);
@@ -85,16 +65,16 @@
                 <img src="assets/hero.jpg" alt="Chazzan Shmuli Heimann" class="recordings-header-image">
             </div>
             <div class="recordings-nav-buttons">
-                <button type="button" class="btn-recordings-nav" data-target="#yomim-noraim"><i class="fa-solid fa-synagogue"></i> Yomim Noraim</button>
-                <button type="button" class="btn-recordings-nav" data-target="#yiddish-collection"><i class="fa-solid fa-music"></i> Yiddish Collection</button>
-                <button type="button" class="btn-recordings-nav" data-target="#video-performances"><i class="fa-brands fa-youtube"></i> Video Performances</button>
-                <button type="button" class="btn-recordings-nav" data-target="#audio-recordings"><i class="fa-solid fa-headphones"></i> Recordings</button>
+                <button type="button" class="btn-recordings-nav" data-target="#section-yomim-noraim"><i class="fa-solid fa-synagogue"></i> Yomim Noraim</button>
+                <button type="button" class="btn-recordings-nav" data-target="#section-yiddish"><i class="fa-solid fa-music"></i> Yiddish Collection</button>
+                <button type="button" class="btn-recordings-nav" data-target="#section-videos"><i class="fa-brands fa-youtube"></i> Video Performances</button>
+                <button type="button" class="btn-recordings-nav" data-target="#section-audio"><i class="fa-solid fa-headphones"></i> Recordings</button>
             </div>
         </div>
     </section>
 
     <!-- Yomim Noraim Featured Series Section -->
-    <section class="featured-series section-padding" id="yomim-noraim">
+    <section class="featured-series section-padding" id="section-yomim-noraim">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Yomim Noraim Series</h2>
@@ -107,7 +87,7 @@
                 <div class="playlist-player-wrapper">
                     <div class="playlist-player">
                         <!-- Main Playlist Player -->
-                        <iframe src="https://www.youtube-nocookie.com/embed/FSPvSjzWKgo" title="Yomim Noraim Series Player" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="about:blank" data-src="https://www.youtube-nocookie.com/embed/FSPvSjzWKgo" title="Yomim Noraim Series Player" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <p class="playlist-video-caption"><i class="fa-solid fa-circle-info"></i> Currently Playing: <span class="currentVideoTitle">Ein Komocha - Av Harachamim</span><span class="currentVideoDesc" class="caption-desc"> — Torah Service Liturgy</span></p>
                 </div>
@@ -273,7 +253,7 @@
     </section>
 
     <!-- Yiddish Songs Featured Series Section -->
-    <section class="featured-series section-padding yiddish-songs-section" id="yiddish-collection" style="border-top: 1px solid var(--border-color); background-color: var(--bg-secondary);">
+    <section class="featured-series section-padding yiddish-songs-section" id="section-yiddish" style="border-top: 1px solid var(--border-color); background-color: var(--bg-secondary);">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Yiddish Songs</h2>
@@ -286,7 +266,7 @@
                 <div class="playlist-player-wrapper">
                     <div class="playlist-player">
                         <!-- Main Playlist Player (Starts with Oi Ir Kleyne Lichtalech) -->
-                        <iframe src="https://www.youtube-nocookie.com/embed/Y7F6GZY_owI" title="Yiddish Songs Player" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="about:blank" data-src="https://www.youtube-nocookie.com/embed/Y7F6GZY_owI" title="Yiddish Songs Player" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <p class="playlist-video-caption"><i class="fa-solid fa-circle-info"></i> Currently Playing: <span class="currentVideoTitle">Oi Ir Kleyne Lichtalech</span><span class="currentVideoDesc" class="caption-desc"> — Chanukah Yiddish Song</span></p>
                 </div>
@@ -317,7 +297,7 @@
     </section>
 
     <!-- Direct Video Embeds Section -->
-    <section class="gallery section-padding" id="video-performances">
+    <section class="gallery section-padding" id="section-videos">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Video Performances</h2>
@@ -331,7 +311,7 @@
                 <!-- Video Item 1 -->
                 <div class="video-embed-card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/ABcJBaEfms8" title="Chasal Sidur Pesach Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="about:blank" data-src="https://www.youtube-nocookie.com/embed/ABcJBaEfms8" title="Chasal Sidur Pesach Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>Chasal Sidur Pesach</h4>
@@ -342,7 +322,7 @@
                 <!-- Video Item 2 -->
                 <div class="video-embed-card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/TJbM0Q3ra6Y" title="Leil Shimurim Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="about:blank" data-src="https://www.youtube-nocookie.com/embed/TJbM0Q3ra6Y" title="Leil Shimurim Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>Leil Shimurim</h4>
@@ -353,7 +333,7 @@
                 <!-- Video Item 3 -->
                 <div class="video-embed-card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/RIdYZxRKL1A" title="Birkas Shehecheyanu Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="about:blank" data-src="https://www.youtube-nocookie.com/embed/RIdYZxRKL1A" title="Birkas Shehecheyanu Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>Birkas Shehecheyanu</h4>
@@ -365,7 +345,7 @@
     </section>
 
     <!-- Simple Audio Recordings Section -->
-    <section class="recordings section-padding" id="audio-recordings" style="border-top: 1px solid var(--border-color);">
+    <section class="recordings section-padding" id="section-audio" style="border-top: 1px solid var(--border-color);">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Audio Recordings</h2>
@@ -441,6 +421,6 @@
     <button class="scroll-to-top" id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
     <!-- JavaScript File -->
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=5"></script>
 </body>
 </html>

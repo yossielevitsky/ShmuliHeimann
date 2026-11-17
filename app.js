@@ -54,6 +54,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
+       LAZY LOAD EMBEDDED IFRAMES SAFELY
+       ========================================== */
+    function loadIframe(iframe) {
+        if (!iframe) return;
+        const dataSrc = iframe.getAttribute('data-src');
+        if (dataSrc) {
+            iframe.src = dataSrc;
+            iframe.removeAttribute('data-src');
+        }
+    }
+
+    const lazyIframes = document.querySelectorAll('iframe[data-src]');
+    if (lazyIframes.length > 0) {
+        if ('IntersectionObserver' in window) {
+            const iframeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadIframe(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '300px 0px' });
+
+            lazyIframes.forEach(iframe => iframeObserver.observe(iframe));
+        } else {
+            // Fallback for older browsers
+            setTimeout(() => {
+                lazyIframes.forEach(loadIframe);
+            }, 600);
+        }
+    }
+
+    /* ==========================================
        RECORDINGS SECTION NAVIGATION BUTTONS
        ========================================== */
     const sectionNavButtons = document.querySelectorAll('.btn-recordings-nav, a[href^="#"]');
@@ -64,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetEl = document.querySelector(targetSelector);
             if (targetEl) {
                 e.preventDefault();
+                targetEl.querySelectorAll('iframe[data-src]').forEach(loadIframe);
                 targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
@@ -234,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Update iframe source with autoplay enabled
                     mainIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+                    mainIframe.removeAttribute('data-src');
 
                     // Update caption title dynamically
                     const trackName = track.querySelector('.playlist-track-name').textContent;
