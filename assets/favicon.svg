@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Rich metallic champagne gold gradient for monogram -->
+    <linearGradient id="goldMonogram" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3D6" />
+      <stop offset="25%" stop-color="#F2D184" />
+      <stop offset="60%" stop-color="#D4AF37" />
+      <stop offset="85%" stop-color="#B88E28" />
+      <stop offset="100%" stop-color="#8F6910" />
+    </linearGradient>
+
+    <!-- Refined border gold gradient -->
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E8C7" />
+      <stop offset="50%" stop-color="#B89C6C" />
+      <stop offset="100%" stop-color="#73582E" />
+    </linearGradient>
+
+    <!-- Deep midnight indigo vignette background -->
+    <linearGradient id="bgMidnight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#191629" />
+      <stop offset="60%" stop-color="#0E0D17" />
+      <stop offset="100%" stop-color="#050508" />
+    </linearGradient>
+
+    <!-- Subtle elegant drop shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+  </defs>
+
+  <!-- Background Squircle / Badge -->
+  <rect x="4" y="4" width="92" height="92" rx="22" fill="url(#bgMidnight)" stroke="url(#goldBorder)" stroke-width="2.5" />
+
+  <!-- Classical Serif 'H' Monogram -->
+  <path d="M 24 21 L 46 21 L 46 25 C 43 27, 40.5 30, 39.5 34 L 39.5 46.5 L 60.5 46.5 L 60.5 34 C 59.5 30, 57 27, 54 25 L 54 21 L 76 21 L 76 25 C 73 27, 70.5 30, 69.5 34 L 69.5 66 C 70.5 70, 73 73, 76 75 L 76 79 L 54 79 L 54 75 C 57 73, 59.5 70, 60.5 66 L 60.5 53.5 L 39.5 53.5 L 39.5 66 C 40.5 70, 43 73, 46 75 L 46 79 L 24 79 L 24 75 C 27 73, 29.5 70, 30.5 66 L 30.5 34 C 29.5 30, 27 27, 24 25 Z"
+        fill="url(#goldMonogram)"
+        filter="url(#shadow)" />
+</svg>
