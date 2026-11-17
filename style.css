@@ -588,6 +588,29 @@ img {
     padding: 10.5rem 0 4.5rem 0;
 }
 
+.recordings-header-image-wrapper {
+    max-width: 340px;
+    margin: 0 auto 2.5rem auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(224, 199, 155, 0.35);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+    transition: var(--transition-smooth);
+}
+
+.recordings-header-image-wrapper:hover {
+    border-color: var(--color-bronze);
+    box-shadow: 0 16px 45px rgba(224, 199, 155, 0.2);
+    transform: translateY(-3px);
+}
+
+.recordings-header-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 .recordings-nav-buttons {
     display: flex;
     justify-content: center;
@@ -1737,6 +1760,11 @@ footer {
         width: 32px;
         height: 32px;
         font-size: 1rem;
+    }
+
+    .recordings-header-image-wrapper {
+        max-width: 250px;
+        margin: 0 auto 1.6rem auto;
     }
 
     .recordings-nav-buttons {
