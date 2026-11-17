@@ -63,14 +63,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scroll lock during initial page load to prevent anchor/iframe jumps in Chrome */
-html.page-loading,
-body.page-loading {
-    overflow: hidden !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-}
-
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
     width: 6px;

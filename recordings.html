@@ -17,21 +17,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
 
     <!-- Prevent browser scroll restoration / anchor bounce on page load in Chrome -->
     <script>
-        document.documentElement.classList.add('page-loading');
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
         if (window.location.hash) {
-            history.replaceState(null, '', window.location.pathname);
+            history.replaceState(null, '', window.location.pathname + window.location.search);
         }
         window.scrollTo(0, 0);
+
+        var __initialScrollLock = true;
+        window.addEventListener('scroll', function() {
+            if (__initialScrollLock && window.scrollY !== 0) {
+                window.scrollTo(0, 0);
+            }
+        }, { passive: false });
+
+        function releaseLock() {
+            window.scrollTo(0, 0);
+            __initialScrollLock = false;
+        }
+
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            setTimeout(releaseLock, 100);
+        } else {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(releaseLock, 100);
+            });
+        }
+
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
     </script>
 </head>
-<body class="page-recordings page-loading">
+<body class="page-recordings">
 
     <!-- Header & Navigation -->
     <header class="navbar">
@@ -419,23 +442,5 @@
 
     <!-- JavaScript File -->
     <script src="app.js?v=4"></script>
-    <script>
-        // Smoothly release scroll lock once layout stabilizes
-        (function() {
-            function releaseLock() {
-                document.documentElement.classList.remove('page-loading');
-                if (document.body) document.body.classList.remove('page-loading');
-                window.scrollTo(0, 0);
-            }
-            if (document.readyState === 'complete') {
-                setTimeout(releaseLock, 60);
-            } else {
-                window.addEventListener('load', function() {
-                    setTimeout(releaseLock, 60);
-                });
-                setTimeout(releaseLock, 800);
-            }
-        })();
-    </script>
 </body>
 </html>
