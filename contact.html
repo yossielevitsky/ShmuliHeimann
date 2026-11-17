@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquire & Book | Cantor Shmuli Heimann</title>
+    <title>Inquire & Book | Chazzan Shmuli Heimann</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Contact Cantor Shmuli Heimann to book cantorial synagogue services, concert events, and weddings.">
+    <meta name="description" content="Contact Chazzan Shmuli Heimann to book cantorial synagogue services, concert events, and weddings.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <span class="logo-cantor">CANTOR</span>
+                <span class="logo-cantor">CHAZZAN</span>
                 <span class="logo-name">SHMULI HEIMANN</span>
             </a>
             <nav class="nav-links">
@@ -48,7 +48,7 @@
         <div class="container page-header-content">
             <h1 class="page-title">Inquire & Book</h1>
             <div class="divider center"></div>
-            <p class="page-subtitle">Connect with us to plan Cantor Heimann's appearance at your event</p>
+            <p class="page-subtitle">Connect with us to plan Chazzan Heimann's appearance at your event</p>
         </div>
     </section>
 
@@ -106,41 +106,17 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="fullName">Your Full Name *</label>
-                                <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                                <input type="text" id="fullName" name="fullName" placeholder="David Bergowitz" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                <input type="email" id="email" name="email" placeholder="david@example.com" required>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phoneNumber">Phone Number</label>
-                                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+1 (555) 123-4567">
-                            </div>
-                            <div class="form-group">
-                                <label for="eventType">Event Type *</label>
-                                <select id="eventType" name="eventType" required>
-                                    <option value="" disabled selected>Select an Event</option>
-                                    <option value="Wedding / Chuppah">Wedding / Chuppah</option>
-                                    <option value="High Holidays Chazzanus">High Holidays Chazzanus</option>
-                                    <option value="Shabbat Chazzanus">Shabbat Chazzanus</option>
-                                    <option value="Concert Performance">Concert Performance</option>
-                                    <option value="Other Celebrations">Other Celebrations / Dinners</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="eventDate">Preferred Date</label>
-                                <input type="date" id="eventDate" name="eventDate">
-                            </div>
-                            <div class="form-group">
-                                <label for="eventLocation">Event Location / Venue</label>
-                                <input type="text" id="eventLocation" name="eventLocation" placeholder="City, State, Country">
-                            </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+1 (555) 123-4567">
                         </div>
 
                         <div class="form-group">
@@ -157,7 +133,7 @@
                     <div class="form-success-message" id="formSuccessMessage">
                         <i class="fa-solid fa-circle-check"></i>
                         <h3>Request Sent!</h3>
-                        <p>Thank you. Cantor Heimann's team will contact you within 24–48 hours.</p>
+                        <p>Thank you. Chazzan Heimann's team will contact you within 24–48 hours.</p>
                     </div>
                 </div>
 
@@ -174,14 +150,30 @@
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p class="copyright">&copy; 2026 Cantor Shmuli Heimann. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Chazzan Shmuli Heimann. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Sticky Floating Social Bar -->
+    <div class="sticky-social-bar" aria-label="Social media links">
+        <a href="https://www.instagram.com/cantorshmuliheimann/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="sticky-social-link">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@CantorShmuliHeimann" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="sticky-social-link">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="sticky-social-link">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="sticky-social-link">
+            <i class="fa-brands fa-spotify"></i>
+        </a>
+    </div>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
     <!-- JavaScript File -->
-    <script src="app.js"></script>
+    <script src="app.js?v=4"></script>
 </body>
 </html>

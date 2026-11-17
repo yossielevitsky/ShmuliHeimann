@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recordings & Videos | Cantor Shmuli Heimann</title>
+    <title>Recordings & Videos | Chazzan Shmuli Heimann</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Listen to select audio recordings and watch live cantorial concert videos of Cantor Shmuli Heimann.">
+    <meta name="description" content="Listen to select audio recordings and watch live cantorial concert videos of Chazzan Shmuli Heimann.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,15 +17,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=9">
+
+    <!-- Prevent browser scroll restoration / anchor bounce on page load in Chrome -->
+    <script>
+        document.documentElement.classList.add('page-loading');
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname);
+        }
+        window.scrollTo(0, 0);
+    </script>
 </head>
-<body class="page-recordings">
+<body class="page-recordings page-loading">
 
     <!-- Header & Navigation -->
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <span class="logo-cantor">CANTOR</span>
+                <span class="logo-cantor">CHAZZAN</span>
                 <span class="logo-name">SHMULI HEIMANN</span>
             </a>
             <nav class="nav-links">
@@ -42,18 +54,21 @@
         </div>
     </header>
 
-    <!-- Page Header Banner -->
+    <!-- Page Header Section Navigation -->
     <section class="page-header">
         <div class="page-header-overlay"></div>
         <div class="container page-header-content">
-            <h1 class="page-title">Recordings & Videos</h1>
-            <div class="divider center"></div>
-            <p class="page-subtitle">Listen to audio compositions and watch live video performances</p>
+            <div class="recordings-nav-buttons">
+                <button type="button" class="btn-recordings-nav" data-target="#yomim-noraim"><i class="fa-solid fa-synagogue"></i> Yomim Noraim</button>
+                <button type="button" class="btn-recordings-nav" data-target="#yiddish-collection"><i class="fa-solid fa-music"></i> Yiddish Collection</button>
+                <button type="button" class="btn-recordings-nav" data-target="#video-performances"><i class="fa-brands fa-youtube"></i> Video Performances</button>
+                <button type="button" class="btn-recordings-nav" data-target="#audio-recordings"><i class="fa-solid fa-headphones"></i> Recordings</button>
+            </div>
         </div>
     </section>
 
     <!-- Yomim Noraim Featured Series Section -->
-    <section class="featured-series section-padding">
+    <section class="featured-series section-padding" id="yomim-noraim">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Yomim Noraim Series</h2>
@@ -66,7 +81,7 @@
                 <div class="playlist-player-wrapper">
                     <div class="playlist-player">
                         <!-- Main Playlist Player -->
-                        <iframe src="https://www.youtube-nocookie.com/embed/FSPvSjzWKgo" title="Yomim Noraim Series Player" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/FSPvSjzWKgo" title="Yomim Noraim Series Player" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <p class="playlist-video-caption"><i class="fa-solid fa-circle-info"></i> Currently Playing: <span class="currentVideoTitle">Ein Komocha - Av Harachamim</span><span class="currentVideoDesc" class="caption-desc"> — Torah Service Liturgy</span></p>
                 </div>
@@ -232,7 +247,7 @@
     </section>
 
     <!-- Yiddish Songs Featured Series Section -->
-    <section class="featured-series section-padding yiddish-songs-section" style="border-top: 1px solid var(--border-color); background-color: var(--bg-secondary);">
+    <section class="featured-series section-padding yiddish-songs-section" id="yiddish-collection" style="border-top: 1px solid var(--border-color); background-color: var(--bg-secondary);">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Yiddish Songs</h2>
@@ -245,7 +260,7 @@
                 <div class="playlist-player-wrapper">
                     <div class="playlist-player">
                         <!-- Main Playlist Player (Starts with Oi Ir Kleyne Lichtalech) -->
-                        <iframe src="https://www.youtube-nocookie.com/embed/Y7F6GZY_owI" title="Yiddish Songs Player" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/Y7F6GZY_owI" title="Yiddish Songs Player" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <p class="playlist-video-caption"><i class="fa-solid fa-circle-info"></i> Currently Playing: <span class="currentVideoTitle">Oi Ir Kleyne Lichtalech</span><span class="currentVideoDesc" class="caption-desc"> — Chanukah Yiddish Song</span></p>
                 </div>
@@ -260,6 +275,15 @@
                                 <span class="playlist-track-desc">Chanukah Yiddish Song</span>
                             </div>
                         </div>
+
+                        <!-- Track Item 2 -->
+                        <div class="playlist-track-item" data-video-id="E1L4WgsLsHg">
+                            <span class="track-play-indicator"><i class="fa-solid fa-play"></i></span>
+                            <div class="playlist-track-details">
+                                <span class="playlist-track-name">Yahrtseit Licht</span>
+                                <span class="playlist-track-desc">Classic Yiddish Song — Composed by Chazzan Yossele Rosenblatt</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -267,7 +291,7 @@
     </section>
 
     <!-- Direct Video Embeds Section -->
-    <section class="gallery section-padding">
+    <section class="gallery section-padding" id="video-performances">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Video Performances</h2>
@@ -281,7 +305,7 @@
                 <!-- Video Item 1 -->
                 <div class="video-embed-card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/ABcJBaEfms8" title="Chasal Sidur Pesach Video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/ABcJBaEfms8" title="Chasal Sidur Pesach Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>Chasal Sidur Pesach</h4>
@@ -292,7 +316,7 @@
                 <!-- Video Item 2 -->
                 <div class="video-embed-card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/TJbM0Q3ra6Y" title="Leil Shimurim Video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/TJbM0Q3ra6Y" title="Leil Shimurim Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>Leil Shimurim</h4>
@@ -303,7 +327,7 @@
                 <!-- Video Item 3 -->
                 <div class="video-embed-card">
                     <div class="video-container">
-                        <iframe src="https://www.youtube-nocookie.com/embed/RIdYZxRKL1A" title="Birkas Shehecheyanu Video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/RIdYZxRKL1A" title="Birkas Shehecheyanu Video" tabindex="-1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h4>Birkas Shehecheyanu</h4>
@@ -315,7 +339,7 @@
     </section>
 
     <!-- Simple Audio Recordings Section -->
-    <section class="recordings section-padding" style="border-top: 1px solid var(--border-color);">
+    <section class="recordings section-padding" id="audio-recordings" style="border-top: 1px solid var(--border-color);">
         <div class="container">
             <div class="section-header text-center">
                 <h2 class="section-title">Audio Recordings</h2>
@@ -365,14 +389,48 @@
         </div>
         <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p class="copyright">&copy; 2026 Cantor Shmuli Heimann. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Chazzan Shmuli Heimann. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Sticky Floating Social Bar -->
+    <div class="sticky-social-bar" aria-label="Social media links">
+        <a href="https://www.instagram.com/cantorshmuliheimann/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="sticky-social-link">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@CantorShmuliHeimann" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="sticky-social-link">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="sticky-social-link">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="sticky-social-link">
+            <i class="fa-brands fa-spotify"></i>
+        </a>
+    </div>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
     <!-- JavaScript File -->
-    <script src="app.js"></script>
+    <script src="app.js?v=4"></script>
+    <script>
+        // Smoothly release scroll lock once layout stabilizes
+        (function() {
+            function releaseLock() {
+                document.documentElement.classList.remove('page-loading');
+                if (document.body) document.body.classList.remove('page-loading');
+                window.scrollTo(0, 0);
+            }
+            if (document.readyState === 'complete') {
+                setTimeout(releaseLock, 60);
+            } else {
+                window.addEventListener('load', function() {
+                    setTimeout(releaseLock, 60);
+                });
+                setTimeout(releaseLock, 800);
+            }
+        })();
+    </script>
 </body>
 </html>

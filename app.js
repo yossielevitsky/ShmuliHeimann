@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================
+       DISABLE UNWANTED AUTO-SCROLL ON PAGE LOAD
+       ========================================== */
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    // Clean hash on page load so reload or navigation does not trigger automatic scroll
+    if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname);
+        window.scrollTo(0, 0);
+    }
+
+    /* ==========================================
        MOBILE NAVIGATION & SCROLL HEADER
        ========================================== */
     const navbar = document.querySelector('.navbar');
@@ -25,11 +38,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close menu drawer when clicking links
+    // Close menu drawer when clicking links, and scroll to top if clicking active page link
     navLinkItems.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
             if (mobileNavToggle) mobileNavToggle.classList.remove('active');
             if (navLinks) navLinks.classList.remove('active');
+
+            const href = link.getAttribute('href');
+            const currentPath = window.location.pathname.split("/").pop();
+            if (href === currentPath || (href === 'index.html' && (currentPath === '' || currentPath === 'index.html'))) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+
+    /* ==========================================
+       RECORDINGS SECTION NAVIGATION BUTTONS
+       ========================================== */
+    const sectionNavButtons = document.querySelectorAll('.btn-recordings-nav, a[href^="#"]');
+    sectionNavButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const targetSelector = button.getAttribute('data-target') || button.getAttribute('href');
+            if (!targetSelector || targetSelector === '#') return;
+            const targetEl = document.querySelector(targetSelector);
+            if (targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 
