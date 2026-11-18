@@ -287,23 +287,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-       SIMPLIFIED INLINE BOOKING FORM SUBMISSION
+       FORMSPREE INLINE BOOKING FORM SUBMISSION
        ========================================== */
     const bookingForm = document.getElementById('bookingForm');
     const formSuccessMessage = document.getElementById('formSuccessMessage');
+    const formErrorMessage = document.getElementById('formErrorMessage');
+    const submitBtn = document.getElementById('submitBtn');
 
     if (bookingForm && formSuccessMessage) {
-        bookingForm.addEventListener('submit', (e) => {
+        bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Hide form and display simple success note inline
-            bookingForm.style.display = 'none';
-            formSuccessMessage.classList.add('active');
-            
-            // Scroll to the top of the form container for visibility
-            const formContainer = bookingForm.parentElement;
-            if (formContainer) {
-                formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Clear any previous error message
+            if (formErrorMessage) {
+                formErrorMessage.style.display = 'none';
+                formErrorMessage.textContent = '';
+            }
+
+            // Save original button state and set loading state
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-circle-notch fa-spin"></i>';
+            }
+
+            try {
+                const formData = new FormData(bookingForm);
+                const endpoint = bookingForm.getAttribute('action') || 'https://formspree.io/f/xjywwqkr';
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    bookingForm.reset();
+                    bookingForm.style.display = 'none';
+                    formSuccessMessage.classList.add('active');
+
+                    // Scroll to the top of the form container for visibility
+                    const formContainer = bookingForm.parentElement;
+                    if (formContainer) {
+                        formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    const data = await response.json().catch(() => null);
+                    let errorMessage = 'There was a problem submitting your request. Please try again.';
+                    if (data && data.errors && data.errors.length > 0) {
+                        errorMessage = data.errors.map(err => err.message).join(', ');
+                    }
+                    if (formErrorMessage) {
+                        formErrorMessage.textContent = errorMessage;
+                        formErrorMessage.style.display = 'block';
+                    } else {
+                        alert(errorMessage);
+                    }
+                }
+            } catch (error) {
+                console.error('Submission failed:', error);
+                const errorMessage = 'Network error. Please check your connection or contact us directly at cantorheimann@gmail.com.';
+                if (formErrorMessage) {
+                    formErrorMessage.textContent = errorMessage;
+                    formErrorMessage.style.display = 'block';
+                } else {
+                    alert(errorMessage);
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
             }
         });
     }

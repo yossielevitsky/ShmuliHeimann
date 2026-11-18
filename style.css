@@ -1296,6 +1296,28 @@ img {
     box-shadow: 0 8px 25px rgba(163, 143, 117, 0.35);
 }
 
+.btn-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Form Error Message */
+.form-error-message {
+    display: none;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.2rem;
+    border-radius: 8px;
+    background: rgba(220, 53, 69, 0.12);
+    border: 1px solid rgba(220, 53, 69, 0.35);
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.4;
+    animation: fadeInUp 0.4s ease both;
+}
+
 /* Success Message Area */
 .form-success-message {
     display: none;

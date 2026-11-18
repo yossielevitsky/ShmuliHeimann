@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
 
@@ -101,19 +101,23 @@
                     <div class="social-links">
                         <a href="https://www.youtube.com/@CantorShmuliHeimann" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                         <a href="https://www.instagram.com/cantorshmuliheimann/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+                        <a href="https://www.facebook.com/Cantor-Shmuli-Heimann" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://open.spotify.com/artist/1nuY91mF9TPf0qId3JdkAp" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
                         <a href="https://wa.me/32475971599" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
 
                 <!-- Booking inquiry Form -->
                 <div class="contact-form-container">
-                    <form id="bookingForm" class="booking-form">
+                    <form id="bookingForm" class="booking-form" action="https://formspree.io/f/xjywwqkr" method="POST">
+                        <!-- Formspree Subject & Spam honeypot -->
+                        <input type="hidden" name="_subject" value="New Booking Inquiry - Chazzan Shmuli Heimann">
+                        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="fullName">Your Full Name *</label>
-                                <input type="text" id="fullName" name="fullName" placeholder="David Bergowitz" required>
+                                <input type="text" id="fullName" name="name" placeholder="David Bergowitz" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address *</label>
@@ -132,8 +136,11 @@
                         </div>
 
                         <button type="submit" class="btn btn-submit" id="submitBtn">
-                            <span>Send Booking Request</span> <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send</span> <i class="fa-solid fa-paper-plane"></i>
                         </button>
+
+                        <!-- Error Message Container -->
+                        <div class="form-error-message" id="formErrorMessage"></div>
                     </form>
                     
                     <!-- Inline Success Message Area -->
@@ -153,8 +160,8 @@
         <div class="footer-socials">
             <a href="https://www.youtube.com/@CantorShmuliHeimann" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             <a href="https://www.instagram.com/cantorshmuliheimann/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+            <a href="https://www.facebook.com/Cantor-Shmuli-Heimann" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://open.spotify.com/artist/1nuY91mF9TPf0qId3JdkAp" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
             <a href="https://wa.me/32475971599" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
         <div class="footer-divider"></div>
@@ -171,10 +178,10 @@
         <a href="https://www.youtube.com/@CantorShmuliHeimann" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="sticky-social-link">
             <i class="fa-brands fa-youtube"></i>
         </a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="sticky-social-link">
+        <a href="https://www.facebook.com/Cantor-Shmuli-Heimann" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="sticky-social-link">
             <i class="fa-brands fa-facebook-f"></i>
         </a>
-        <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="sticky-social-link">
+        <a href="https://open.spotify.com/artist/1nuY91mF9TPf0qId3JdkAp" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="sticky-social-link">
             <i class="fa-brands fa-spotify"></i>
         </a>
     </div>
@@ -183,6 +190,6 @@
     <button class="scroll-to-top" id="scrollTopBtn" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
     <!-- JavaScript File -->
-    <script src="app.js?v=5"></script>
+    <script src="app.js?v=6"></script>
 </body>
 </html>
